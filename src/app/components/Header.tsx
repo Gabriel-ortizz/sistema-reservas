@@ -1,38 +1,21 @@
-'use client'
-import React, { useState } from 'react';
+import React from 'react';
+import LanguageCurrencySelector from './LanguageCurrencySelector';
+import LocationDateSelector from './LocationDateSelector';
+import ThemeToggle from './ThemeToggle';
 
-const LocationDateSelector: React.FC = () => {
-  const [location, setLocation] = useState('');
-  const [checkInDate, setCheckInDate] = useState('');
-  const [numPeople, setNumPeople] = useState(1);
-
+const Header: React.FC = () => {
   return (
-    <div className="flex space-x-4 items-center">
-      <input
-        type="text"
-        placeholder="Destino"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        className="p-2 border rounded"
-      />
-
-      <input
-        type="date"
-        value={checkInDate}
-        onChange={(e) => setCheckInDate(e.target.value)}
-        className="p-2 border rounded"
-      />
-
-      <input
-        type="number"
-        min="1"
-        value={numPeople}
-        onChange={(e) => setNumPeople(Number(e.target.value))}
-        className="p-2 border rounded"
-        placeholder="Pessoas"
-      />
-    </div>
+    <header className="bg-blue-600 p-4 text-white dark:bg-blue-900">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Sistema de Reservas de Hotel</h1>
+        <div className="flex space-x-6">
+          <LocationDateSelector />
+          <LanguageCurrencySelector />
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
   );
 };
 
-export default LocationDateSelector;
+export default Header;
