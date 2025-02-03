@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
-import  DatePicker  from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Calendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const handleDateChange = (date: Date) => {
+  const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
 
@@ -20,7 +22,9 @@ const Calendar: React.FC = () => {
         className="border p-2 rounded-md"
       />
       {selectedDate && (
-        <p className="mt-4">Você selecionou: {selectedDate.toLocaleDateString()}</p>
+        <p className="mt-4 text-lg">
+          Você selecionou: <span className="font-semibold">{selectedDate.toLocaleDateString()}</span>
+        </p>
       )}
     </div>
   );

@@ -4,11 +4,21 @@ import { Link } from 'react-router-dom';
 const Navbar: React.FC = () => {
   return (
     <nav className="bg-gray-800 text-white p-4">
-      <ul className="flex justify-between">
-        <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
-        <li><Link to="/reservations" className="hover:text-gray-400">Reservar</Link></li>
-        <li><Link to="/admin" className="hover:text-gray-400">Admin</Link></li>
-      </ul>
+      <div className="container mx-auto flex justify-between items-center">
+        <h1 className="text-xl font-bold">Sistema de Reserva</h1>
+        <ul className="flex space-x-4">
+          <li>
+            <Link to="/" className="hover:underline">
+              Calendário
+            </Link>
+          </li>
+          <li>
+            <Link to="/reservations" className="hover:underline">
+              Reservas
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 };

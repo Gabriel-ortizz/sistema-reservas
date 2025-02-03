@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 const ReservationForm: React.FC = () => {
@@ -10,13 +12,25 @@ const ReservationForm: React.FC = () => {
     event.preventDefault();
 
     const reservation = { name, phone, people, date };
-    
-    // Enviar os dados para o backend (simulação com um alert)
-    alert(`Reserva feita com sucesso: ${JSON.stringify(reservation)}`);
+
+    // Aqui você pode enviar os dados para o backend, por exemplo, com fetch ou axios
+    try {
+      // Simulação: substitua o alert por uma chamada real à API
+      alert(`Reserva feita com sucesso: ${JSON.stringify(reservation)}`);
+      // Resetando o formulário
+      setName('');
+      setPhone('');
+      setPeople(1);
+      setDate('');
+    } catch (error) {
+      alert('Ocorreu um erro ao tentar realizar a reserva. Por favor, tente novamente.');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4">
+    <form onSubmit={handleSubmit} className="p-4 max-w-md mx-auto border rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center">Formulário de Reserva</h2>
+      
       <div className="mb-4">
         <label htmlFor="name" className="block text-sm font-semibold">Nome</label>
         <input
@@ -24,7 +38,7 @@ const ReservationForm: React.FC = () => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded-md w-full"
+          className="border p-2 rounded-md w-full focus:ring focus:ring-blue-300"
           required
         />
       </div>
@@ -36,7 +50,7 @@ const ReservationForm: React.FC = () => {
           id="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="border p-2 rounded-md w-full"
+          className="border p-2 rounded-md w-full focus:ring focus:ring-blue-300"
           required
         />
       </div>
@@ -48,7 +62,7 @@ const ReservationForm: React.FC = () => {
           id="people"
           value={people}
           onChange={(e) => setPeople(Number(e.target.value))}
-          className="border p-2 rounded-md w-full"
+          className="border p-2 rounded-md w-full focus:ring focus:ring-blue-300"
           required
           min={1}
         />
@@ -61,14 +75,14 @@ const ReservationForm: React.FC = () => {
           id="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="border p-2 rounded-md w-full"
+          className="border p-2 rounded-md w-full focus:ring focus:ring-blue-300"
           required
         />
       </div>
 
       <button
         type="submit"
-        className="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
+        className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition-colors"
       >
         Reservar
       </button>
