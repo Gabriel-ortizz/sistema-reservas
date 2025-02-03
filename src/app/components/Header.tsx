@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Header: React.FC = () => {
+const LocationDateSelector: React.FC = () => {
+  const [location, setLocation] = useState('');
+  const [checkInDate, setCheckInDate] = useState('');
+  const [numPeople, setNumPeople] = useState(1);
+
   return (
-    <header className="bg-blue-600 p-4 text-white text-center">
-      <h1 className="text-2xl font-bold">Sistema de Reservas de Hotel</h1>
-    </header>
+    <div className="flex space-x-4 items-center">
+      <input
+        type="text"
+        placeholder="Destino"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        className="p-2 border rounded"
+      />
+
+      <input
+        type="date"
+        value={checkInDate}
+        onChange={(e) => setCheckInDate(e.target.value)}
+        className="p-2 border rounded"
+      />
+
+      <input
+        type="number"
+        min="1"
+        value={numPeople}
+        onChange={(e) => setNumPeople(Number(e.target.value))}
+        className="p-2 border rounded"
+        placeholder="Pessoas"
+      />
+    </div>
   );
 };
 
-export default Header;
+export default LocationDateSelector;
