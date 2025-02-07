@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.22.10",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "next": "15.1.6",

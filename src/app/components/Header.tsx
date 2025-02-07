@@ -1,21 +1,20 @@
-import React from 'react';
-import LanguageCurrencySelector from './LanguageCurrencySelector';
-import LocationDateSelector from './LocationDateSelector';
-import ThemeToggle from './ThemeToggle';
+import { UserAvatar } from './UserAvatar';
 
-const Header: React.FC = () => {
+interface User {
+  name: string;
+  avatar: string;
+}
+
+export function Header() {
+  const user: User = {
+    name: "Usuário",
+    avatar: "https://via.placeholder.com/40",
+  };
+
   return (
-    <header className="bg-blue-600 p-4 text-white dark:bg-blue-900">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Sistema de Reservas de Hotel</h1>
-        <div className="flex space-x-6">
-          <LocationDateSelector />
-          <LanguageCurrencySelector />
-          <ThemeToggle />
-        </div>
-      </div>
+    <header className="bg-white shadow p-4 flex justify-between items-center">
+      <h1 className="text-xl font-bold">Painel</h1>
+      <UserAvatar user={user} />
     </header>
   );
-};
-
-export default Header;
+}

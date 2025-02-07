@@ -1,20 +1,34 @@
 'use client'
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import BookingPage from './pages/BookingPage';
-import LoginPage from './pages/LoginPage';
-
-const App: React.FC = () => {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Sidebar } from "./components/Sidebar";
+import { Header } from "./components/Header";
+import { Dashboard } from "./pages/Dashboard";
+import { Projects } from "./pages/Projects";
+import { Tasks } from "./pages/Tasks";
+import { Settings } from "./pages/Settings";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reserva" element={<BookingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
+      <div className="flex h-screen">
+        <Sidebar />
+        <div className="flex flex-col flex-1">
+          <Header />
+          <div className="p-6">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;
